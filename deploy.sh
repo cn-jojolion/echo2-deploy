@@ -113,7 +113,7 @@ check_and_install "pnpm" "npm install pnpm -g"
 
 #检查 gettext
 #check_and_install "pnpm" "npm install pnpm -g"
-yq 
+ 
 #检查 gettext
 check_and_install "yq" "apt install yq"
 
