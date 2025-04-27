@@ -59,31 +59,31 @@ check_and_install() {
 # 参数2: 模板文件路径
 # 参数3: 输出文件路径（可选，默认为模板文件同目录下的output.txt）
 replace_variables() {
-    local CONFIG_FILE="$1"
-    local TEMPLATE_FILE="$2"
-    local OUTPUT_FILE="${3:-$(dirname "$TEMPLATE_FILE")/output.txt}"
+    local CONFIG_CONTENT="$1"    # YAML 配置内容（字符串）
+    local TEMPLATE_CONTENT="$2"  # 模板内容（字符串）
+    local OUTPUT_FILE="${3:-output.txt}"  # 输出文件（可选，默认 output.txt）
 
-    # 检查文件是否存在
-    if [ ! -f "$CONFIG_FILE" ]; then
-        echo "错误: 配置文件 $CONFIG_FILE 不存在"
+    # 检查参数是否为空
+    if [ -z "$CONFIG_CONTENT" ]; then
+        echo "错误: 配置内容不能为空"
         return 1
     fi
 
-    if [ ! -f "$TEMPLATE_FILE" ]; then
-        echo "错误: 模板文件 $TEMPLATE_FILE 不存在"
+    if [ -z "$TEMPLATE_CONTENT" ]; then
+        echo "错误: 模板内容不能为空"
         return 1
     fi
 
-    local template_content=$(cat "$TEMPLATE_FILE")
+    local template_content="$TEMPLATE_CONTENT"
     
     # 获取所有需要替换的变量
     variables=$(grep -oP '{\$\K[^}]+' <<< "$template_content" || true)
     
     for var in $variables; do
-        # 从YAML中获取值
-        value=$(yq eval ".${var}" "$CONFIG_FILE")
+        # 从 YAML 内容中提取变量值（使用 yq 解析字符串）
+        value=$(echo "$CONFIG_CONTENT" | yq eval ".${var}" -)
         
-        # 替换模板中的变量（兼容${VAR}和{$VAR}格式）
+        # 替换模板中的变量（兼容 ${VAR} 和 {$VAR} 格式）
         template_content=${template_content//"\${$var}"/$value}
         template_content=${template_content//"{\$$var}"/$value}
     done
@@ -124,7 +124,7 @@ cd /home
 rm -rf /home/echo-client-h5
 git clone https://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@github.com/cn-jojolion/echo-client-h5.git
 cd ./echo-client-h5
-replace_variables ""
+replace_variables "$(curl -sfSL https://raw.githubusercontent.com/cn-jojolion/echo2-deploy/refs/heads/main/.depoly/deply-bitsfort.yml)" "$(cat /home/echo-client-h5/.env.production)"
 
 # nvm use 20
 # pnpm install
