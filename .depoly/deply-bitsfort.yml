@@ -4,12 +4,12 @@ CLIENT:
   VITE_APP_ENV: trustdefi
   # API
   VITE_APP_BASE_API: https://client-api.bitsfort.com
-  # STATIC API 'https://echo-res.oss-cn-hongkong.aliyuncs.com'
+  # STATIC
   VITE_APP_STATIC_API: https://client-api.bitsfort.com
   # WSS
   VITE_APP_BASE_WSS: wss://client-api.bitsfort.com
   # 交易所名称
-  VITE_APP_EXCHANGE_NAME: DEV
+  VITE_APP_EXCHANGE_NAME: BITSFORT
   # 默认主题 light dark
   VITE_APP_PLEATFORM_THEME: light
   # 缩写标题
@@ -21,9 +21,25 @@ CLIENT:
   # 描述
   VITE_APP_META_DESCRIPTION: DESCRIPTION
   # # H5 URL
-  # VITE_APP_PLANFORM_H5: https://jysh5.0kx.co
+  # VITE_APP_PLANFORM_H5: https://123.aa.co
   # # PC URL
-  # VITE_APP_PLANFORM_PC: https://jysh5.0kx.co
+  # VITE_APP_PLANFORM_PC: https://123.aa.co
+ADMIN:
+  # 开发环境配置
+  ENV=production
+
+  # 运行平台
+  VUE_APP_ENV=prod
   
+  # 页面标题
+  VUE_APP_TITLE=后台管理系统
+  
+  # 后台管理系统/开发环境 
+  VUE_APP_BASE_API=https://admin-api.bitsfort.com
+  # WSS
+  VUE_APP_BASE_WSS=wss://admin-api.bitsfort.com
+  
+  # 路由懒加载
+  VUE_CLI_BABEL_TRANSPILE_MODULES=true
 
 
