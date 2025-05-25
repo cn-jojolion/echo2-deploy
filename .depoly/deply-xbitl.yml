@@ -3,11 +3,11 @@ CLIENT:
   #VITE_APP_ENV: dev
   VITE_APP_ENV: trustdefi
   # API
-  VITE_APP_BASE_API: https://client-api.bitsfort.com
+  VITE_APP_BASE_API: https://client-api.xbitl.com
   # STATIC
-  VITE_APP_STATIC_API: https://client-api.bitsfort.com
+  VITE_APP_STATIC_API: https://client-api.xbitl.com
   # WSS
-  VITE_APP_BASE_WSS: wss://client-api.bitsfort.com
+  VITE_APP_BASE_WSS: wss://client-api.xbitl.com
   # 交易所名称
   VITE_APP_EXCHANGE_NAME: XBITL
   # 默认主题 light dark
@@ -35,9 +35,9 @@ ADMIN:
   VUE_APP_TITLE: 后台管理系统
   
   # 后台管理系统/开发环境 
-  VUE_APP_BASE_API: https://admin-api.bitsfort.com
+  VUE_APP_BASE_API: https://admin-api.xbitl.com
   # WSS
-  VUE_APP_BASE_WSS: wss://admin-api.bitsfort.com
+  VUE_APP_BASE_WSS: wss://admin-api.xbitl.com
   
   # 路由懒加载
   VUE_CLI_BABEL_TRANSPILE_MODULES: true
